@@ -1,4 +1,4 @@
-#!usr/bin/python3
+#!/usr/bin/python3
 
 """
 Working with Reddit API to counts subreddit subscribbers
