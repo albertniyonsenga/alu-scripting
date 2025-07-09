@@ -1,27 +1,31 @@
 #!/usr/bin/python3
 """
-Reddit Suscriber count module
-Working with Reddit API to counts subreddit subscribbers
+Reddit API Subscriber Count Module
+
+This module provides a function to query the Reddit API
+and retrieve subscriber counts for subreddits.
 """
+
 import requests
 import sys
 
 def number_of_subscribers(subreddit):
     """
-    Queries the Reddit API and returns the number of subscribers for a given subreddit. 
+    Retrieve the number of subscribers for a given subreddit.
+
     Args:
-        subreddit(str): Name for the subreddit to query
+        subreddit (str): The name of the subreddit to query
 
     Returns:
-        int: Number of subcribers(0 for invalid subreddits or errors).
+        int: Number of subscribers if subreddit is valid, 0 otherwise
     """
     url = f"https://www.reddit.com/r/{subreddit}/about.json"
-    headers = {'User-Agent': 'Python:RedditAPI.Exercise:v1.0 (by /u/anonymous)'}
+    headers = {"User-Agent": "linux:subreddit.subs:v1.0 (by /u/throwaway)"}
     
     try:
         response = requests.get(url, headers=headers, allow_redirects=False)
         if response.status_code == 200:
-            return response.json().get('data', {}).get('subscribers', 0)
+            return response.json().get("data", {}).get("subscribers", 0)
         return 0
     except requests.RequestException:
         return 0
