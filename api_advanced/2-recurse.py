@@ -1,22 +1,19 @@
 #!/usr/bin/python3
+"""Recursively retrieve titles of all hot articles for a given subreddit.
 
-import argparse
+Args:
+    subreddit (str): The subreddit to query.
+    hot_list (list): Accumulator list of titles (used in recursion).
+    after (str): The 'after' parameter for pagination (used in recursion).
+
+Returns:
+    list: List of titles of all hot posts if subreddit is valid.
+    None: If subreddit is invalid or no results found.
+"""
 import requests
 
 
 def recurse(subreddit, hot_list=None, after=None):
-    """
-    Recursively retrieve titles of all hot articles for a given subreddit.
-
-    Args:
-        subreddit (str): The subreddit to query.
-        hot_list (list): Accumulator list of titles (used in recursion).
-        after (str): The 'after' parameter for pagination (used in recursion).
-
-    Returns:
-        list: List of titles of all hot posts if subreddit is valid.
-        None: If subreddit is invalid or no results found.
-    """
     if hot_list is None:
         hot_list = []
 
@@ -51,13 +48,4 @@ def recurse(subreddit, hot_list=None, after=None):
 
     except Exception:
         return None
-
-if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="Get hot list from a subreddit.")
-    parser.add_argument("subreddit", type=str, help="Name of the subreddit")
-    args = parser.parse_args()
-    result = recurse(args.subreddit)
-    if result is None:
-        print("None")
-    else:
-        print(result)
+    
