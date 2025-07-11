@@ -1,23 +1,20 @@
 #!/usr/bin/python3
-"""Retrieve the number of subscribers for a given subreddit.
-
-Args:
-    subreddit (str): The name of the subreddit to query
-
-Returns:
-    int: Number of subscribers if subreddit is valid, 0 otherwise
+"""
+0-subs
 """
 import requests
-import sys
 
 def number_of_subscribers(subreddit):
     url = f"https://www.reddit.com/r/{subreddit}/about.json"
-    headers = {"User-Agent": "linux:subreddit.subs:v1.0 (by /u/throwaway)"}
-    
+    headers = {
+        'User-Agent': 'Mozilla/5.0 (compatible; RedditAPIProject/1.0)'
+    }
     try:
         response = requests.get(url, headers=headers, allow_redirects=False)
         if response.status_code == 200:
-            return response.json().get("data", {}).get("subscribers", 0)
-        return 0
-    except requests.RequestException:
+            data = response.json()
+            return data.get('data', {}).get('subscribers', 0)
+        else:
+            return 0
+    except Exception:
         return 0
