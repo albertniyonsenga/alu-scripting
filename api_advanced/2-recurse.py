@@ -1,7 +1,4 @@
 #!/usr/bin/python3
-"""
-Recursive function to query Reddit API and return all hot post titles for a subreddit.
-"""
 
 import argparse
 import requests

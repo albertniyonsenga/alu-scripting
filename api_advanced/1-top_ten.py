@@ -1,12 +1,4 @@
 #!/usr/bin/python3
-"""
-Reddit API Hot Posts Module
-
-This module provides functionality to query the Reddit API
-and retrieve the titles of hot posts for a given subreddit.
-The script handles both existing and non-existent subreddits
-and can be run from the command line with a subreddit argument.
-"""
 
 import argparse
 import requests

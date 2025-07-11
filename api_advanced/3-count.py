@@ -1,14 +1,14 @@
 #!/usr/bin/python3
-"""
-Recursive function to query Reddit API, parse titles of hot articles,
-and print a sorted count of given keywords (case-insensitive).
-"""
 
 import argparse
 import requests
 
 
 def count_words(subreddit, word_list, after=None, counts=None):
+    """
+    Recursive function to query Reddit API, parse titles of hot articles,
+    and print a sorted count of given keywords (case-insensitive).
+    """
     if counts is None:
         counts = {}
 
@@ -55,6 +55,7 @@ def count_words(subreddit, word_list, after=None, counts=None):
 
 
 def _print_counts(counts, word_counts):
+    """Printing the counts"""
     final_counts = {}
     for word, dup_count in word_counts.items():
         if word in counts and counts[word] > 0:
