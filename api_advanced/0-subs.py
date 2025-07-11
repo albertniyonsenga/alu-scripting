@@ -21,9 +21,3 @@ def number_of_subscribers(subreddit):
         return 0
     except requests.RequestException:
         return 0
-
-if __name__ == '__main__':
-    if len(sys.argv) < 2:
-        print("Please pass an argument for the subreddit to search.")
-    else:
-        print(number_of_subscribers(sys.argv[1]))
